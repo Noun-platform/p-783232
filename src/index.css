@@ -2,7 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Try loading Futura PT from Adobe Fonts (requires subscription) */
+@import url('https://use.typekit.net/afs2jlp.css');
+
+/* Fallback to Google Fonts alternative that's similar to Futura PT */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 @layer base {
+  /* ... keep existing code (root variables) */
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -52,6 +59,7 @@
   }
 
   .dark {
+    /* ... keep existing code (dark mode variables) */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
@@ -96,6 +104,11 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* Apply Futura PT with fallbacks */
+  html, body, input, button, textarea, select {
+    font-family: 'Futura PT', 'Montserrat', sans-serif;
   }
 }
