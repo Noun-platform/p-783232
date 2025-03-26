@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Hero from "@/components/landing/Hero";
 import Features from "@/components/landing/Features";
 import ImageSection from "@/components/landing/ImageSection";
 import Partners from "@/components/landing/Partners";
 import HowItWorks from "@/components/landing/HowItWorks";
-import AiBeta from "@/components/landing/AiBeta";
-
+import BriefGeneratorSection from "@/components/landing/BriefGeneratorSection";
+import { toast } from 'sonner';
 const Index = () => {
+  const [brief, setBrief] = useState<any>(null);
+  const [userEmail, setUserEmail] = useState<string | null>(localStorage.getItem('user_email'));
+  const navigate = useNavigate();
+
+  const handleBriefGenerated = (newBrief: any) => {
+    setBrief(newBrief);
+    toast.success('Product brief generated successfully!');
+  };
+
+  const handleEmailSubmit = (email: string) => {
+    localStorage.setItem('user_email', email);
+    setUserEmail(email);
+    toast.success('Thank you for subscribing!');
+  };
+
   return (
     <main className="w-full bg-white mx-auto my-0">
       <Hero />
@@ -36,7 +52,12 @@ const Index = () => {
       <Partners />
 
       <HowItWorks />
-      <AiBeta />
+      <BriefGeneratorSection 
+          userEmail={userEmail} 
+          onEmailSubmit={handleEmailSubmit}
+          onBriefGenerated={handleBriefGenerated}
+          brief={brief}
+      />
     </main>
   );
 };
