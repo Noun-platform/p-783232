@@ -1,16 +1,14 @@
-
 import React from "react";
 
 const Features = () => {
   return (
     <section className="px-[149px] py-20 max-md:px-10 max-md:py-[60px]">
       <div className="text-center mb-[60px]">
-        <h2 className="text-[40px] font-normal tracking-[1.2px] text-black mb-5">
+        <h2 className="text-[40px] w-[614.113px]font-normal tracking-[1.2px] text-black mb-5">
           Tired of slow responses, high MOQs, and outdated systems?
         </h2>
-        <p className="text-[25px] font-light tracking-[0.75px] text-black max-w-[614px] mx-auto my-0">
-          We tear down the old way of developing skincare products and replace
-          it with clarity, speed, and transparency.
+        <p className="custom-paragraph">
+          Connect with vetted experts, create breakthrough products, and scale with confidence—all in one platform.
         </p>
       </div>
       <div className="grid grid-cols-[repeat(2,1fr)] gap-[30px] max-sm:grid-cols-[1fr]">
@@ -124,11 +122,7 @@ const Features = () => {
         </div>
       </div>
       
-      <div className="flex justify-center mt-12">
-        <button className="bg-[#FFEF62] py-3 px-8 rounded text-black font-normal">
-          Try our AI Brief Now
-        </button>
-      </div>
+     
     </section>
   );
 };

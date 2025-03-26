@@ -8,6 +8,50 @@
 /* Fallback to Google Fonts alternative that's similar to Futura PT */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
+@font-face {
+  font-family: 'Futura PT';
+  src: url('/fonts/FuturaPTLight.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura PT';
+  src: url('/fonts/FuturaPTBook.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura PT';
+  src: url('/fonts/FuturaPTDemi.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura PT';
+  src: url('/fonts/FuturaPTBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura PT';
+  src: url('/fonts/FuturaPTExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'YourCustomFont';
+  src: url('/fonts/YourFont.woff2') format('woff2'),
+       url('/fonts/YourFont.woff') format('woff'),
+       url('/fonts/YourFont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @layer base {
   /* ... keep existing code (root variables) */
   :root {
@@ -96,6 +140,11 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  /* Apply the font globally */
+  body {
+    font-family: 'Futura PT', sans-serif;
+  }
 }
 
 @layer base {
@@ -146,4 +195,72 @@
   .caption {
     @apply text-sm font-normal;
   }
+}
+
+.custom-nav-link {
+  font-kerning: none;
+  font-feature-settings: 'liga' off;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.54px;
+  color:#fff;
+
+}
+
+.custom-header {
+  font-kerning: none;
+  font-feature-settings: 'liga' off;
+  font-family: 'Futura PT', sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.2px;
+  color: #000;
+  text-align: center;
+}
+
+.custom-div {
+  font-kerning: none;
+  font-feature-settings: 'liga' off;
+  font-family: 'Futura PT', sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.9px;
+  color: #FFF;
+  text-align: center;
+}
+
+.custom-paragraph {
+  font-kerning: none;
+  font-feature-settings: 'liga' off;
+  font-family: 'Futura PT', sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.75px;
+  color: #000;
+  text-align: center;
+  width: 614.113px;
+  margin: 0 auto; /* Center the paragraph */
+}
+
+.custom-heading {
+  font-kerning: none;
+  font-feature-settings: 'liga' off;
+  font-family: 'Futura PT', sans-serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.2px;
+  color: #000;
+  text-align: center;
+  width: 981px;
+  margin: 0 auto; /* Center the heading */
 }

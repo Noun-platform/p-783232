@@ -43,6 +43,16 @@ const Partners = () => {
           />
         ))}
       </div>
+      <div className="flex justify-center">
+        <button
+          className="w-[204px] bg-[#FCF890] py-2 px-4 h-[50px] rounded-full 
+          text-[#000000] text-center text-[16px] font-normal 
+          leading-normal tracking-[0.96px] capitalize 
+          antialiased mt-[10px]"
+        >
+          Join our beta
+        </button>
+      </div>
     </section>
   );
 };
