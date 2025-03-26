@@ -42,7 +42,7 @@ const Hero = () => {
               Projects
             </a>
             <a
-              href="#sign-in"
+              href="https://noun-project.vercel.app/apps/loginLanding"
               className="text-center custom-nav-link hover:text-white transition-colors text-sm font-normal tracking-wide"
             >
               Sign In
