@@ -3,6 +3,13 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
+  const scrollToBriefGenerator = () => {
+    const briefGeneratorSection = document.getElementById("brief-generator");
+    if (briefGeneratorSection) {
+      briefGeneratorSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="relative">
       <div
@@ -59,6 +66,7 @@ const Hero = () => {
             </div>
             <div className="flex gap-4 justify-center max-sm:flex-col max-sm:items-center">
               <button
+                onClick={scrollToBriefGenerator}
                 className="w-[170px] bg-[#FCF890] py-2 px-4 h-[50px] rounded-full 
                 text-[#000000] text-center text-[18px] font-thin 
                 leading-normal tracking-[0.96px] capitalize 
@@ -67,6 +75,7 @@ const Hero = () => {
                 Connect
               </button>
               <button
+                onClick={scrollToBriefGenerator}
                 className="w-[170px] border-[1px] border-[#FCFCFA] px-4 h-[50px] rounded-full 
                 text-[#FCFCFA] text-center text-[18px] font-thin 
                 leading-normal tracking-[0.96px] capitalize antialiased"
