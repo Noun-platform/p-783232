@@ -9,7 +9,7 @@ import AiBeta from "@/components/landing/AiBeta";
 
 const Index = () => {
   return (
-    <main className="max-w-screen-xl w-full bg-white mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm">
+    <main className="w-full bg-white mx-auto my-0">
       <Hero />
       <Features />
       <ImageSection
