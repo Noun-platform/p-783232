@@ -20,9 +20,9 @@ const HowItWorks = () => {
         <div className="flex flex-col">
           <div className="relative h-[240px] mb-4 overflow-hidden rounded-lg">
             <img
-              src="/lovable-uploads/861db2c6-dfd5-46c9-8b5b-e9bfc26967d4.png"
+              src="/lovable-uploads/6aeb96bd-16eb-41e8-8eef-44856e6cbc6c.png"
               alt="Create Your Profile"
-              className="w-full h-full object-cover object-left-top"
+              className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 flex items-center justify-center bg-black/30">
               <h3 className="text-white text-xl font-medium tracking-wider uppercase text-center">
@@ -40,9 +40,9 @@ const HowItWorks = () => {
         <div className="flex flex-col">
           <div className="relative h-[240px] mb-4 overflow-hidden rounded-lg">
             <img
-              src="/lovable-uploads/861db2c6-dfd5-46c9-8b5b-e9bfc26967d4.png"
+              src="/lovable-uploads/566266c4-1c7c-476a-9225-c7246af05441.png"
               alt="Match With Vendors"
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 flex items-center justify-center bg-black/30">
               <h3 className="text-white text-xl font-medium tracking-wider uppercase text-center">
@@ -62,7 +62,7 @@ const HowItWorks = () => {
             <img
               src="/lovable-uploads/861db2c6-dfd5-46c9-8b5b-e9bfc26967d4.png"
               alt="Collaborate & Create"
-              className="w-full h-full object-cover object-right-top"
+              className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 flex items-center justify-center bg-black/30">
               <h3 className="text-white text-xl font-medium tracking-wider uppercase text-center">
