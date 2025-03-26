@@ -1,21 +1,22 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 
 const HowItWorks = () => {
   return (
-    <section className="px-[149px] py-20 max-md:px-10 max-md:py-[60px]">
-      <div className="text-center mb-[60px]">
-        <h2 className="custom-heading mb-5">
+    <section className="px-4 md:px-10 lg:px-[149px] py-10 md:py-20">
+      <div className="text-center mb-[40px] md:mb-[60px]">
+        <h2 className="text-2xl md:text-3xl lg:text-[40px] font-normal tracking-[1.2px] text-black mb-5 px-4">
           How NOUN works
         </h2>
-        <p className="text-[25px] font-light tracking-[0.75px] text-black max-w-[614px] mx-auto my-0">
+        <p className="text-lg md:text-xl lg:text-[25px] font-light tracking-[0.75px] text-black max-w-[614px] mx-auto my-0 px-4">
           Our simple process helps you find and connect with the perfect vendors
           in just a few steps.
         </p>
       </div>
 
-      <div className="grid grid-cols-[repeat(3,1fr)] gap-[30px] max-md:grid-cols-[repeat(2,1fr)] max-sm:grid-cols-[1fr]">
-        <div className="border p-[30px] rounded-2xl border-solid border-[#B9B9B9] flex flex-col h-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="border p-5 md:p-[30px] rounded-2xl border-solid border-[#B9B9B9] flex flex-col h-full">
           <div className="mb-5">
             <div className="w-10 h-10 rounded-full bg-[#2F6DE6] flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
@@ -32,7 +33,7 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="border p-[30px] rounded-2xl border-solid border-[#B9B9B9] flex flex-col h-full">
+        <div className="border p-5 md:p-[30px] rounded-2xl border-solid border-[#B9B9B9] flex flex-col h-full">
           <div className="mb-5">
             <div className="w-10 h-10 rounded-full bg-[#2F6DE6] flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
@@ -49,7 +50,7 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="border p-[30px] rounded-2xl border-solid border-[#B9B9B9] flex flex-col h-full">
+        <div className="border p-5 md:p-[30px] rounded-2xl border-solid border-[#B9B9B9] flex flex-col h-full">
           <div className="mb-5">
             <div className="w-10 h-10 rounded-full bg-[#2F6DE6] flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">

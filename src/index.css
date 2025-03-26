@@ -7,53 +7,22 @@
 
 /* Fallback to Google Fonts alternative that's similar to Futura PT */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-
 @font-face {
   font-family: 'Futura PT';
-  src: url('/fonts/FuturaPTLight.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Futura PT';
-  src: url('/fonts/FuturaPTBook.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Futura PT';
-  src: url('/fonts/FuturaPTDemi.otf') format('opentype');
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Futura PT';
-  src: url('/fonts/FuturaPTBold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Futura PT';
-  src: url('/fonts/FuturaPTExtraBold.otf') format('opentype');
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'YourCustomFont';
-  src: url('/fonts/YourFont.woff2') format('woff2'),
-       url('/fonts/YourFont.woff') format('woff'),
-       url('/fonts/YourFont.ttf') format('truetype');
+  src: url('/fonts/FuturaPTLight.otf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Futura PT';
+  src: url('/fonts/FuturaPTBold.otf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
 @layer base {
-  /* ... keep existing code (root variables) */
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -103,7 +72,6 @@
   }
 
   .dark {
-    /* ... keep existing code (dark mode variables) */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
@@ -143,7 +111,17 @@
 
   /* Apply the font globally */
   body {
+    color: var(--foreground);
+    background: #FCFCFA;
     font-family: 'Futura PT', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: normal;
+  
+    color: black;
+    width: 100%;
+    height: 100%;
+    
   }
 }
 
@@ -154,6 +132,8 @@
 
   body {
     @apply bg-background text-foreground font-sans font-normal;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -215,7 +195,7 @@
   font-family: 'Futura PT', sans-serif;
   font-size: 40px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: bold;
   line-height: normal;
   letter-spacing: 1.2px;
   color: #ffff;
@@ -225,42 +205,84 @@
 .custom-div {
   font-kerning: none;
   font-feature-settings: 'liga' off;
-  font-family: 'Futura PT', sans-serif;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: 0.9px;
-  color: #FFF;
-  text-align: center;
-}
-
-.custom-paragraph {
-  font-kerning: none;
-  font-feature-settings: 'liga' off;
-  font-family: 'Futura PT', sans-serif;
-  font-size: 25px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-  letter-spacing: 0.75px;
-  color: #000;
-  text-align: center;
-  width: 614.113px;
-  margin: 0 auto; /* Center the paragraph */
-}
-
-.custom-heading {
-  font-kerning: none;
-  font-feature-settings: 'liga' off;
-  font-family: 'Futura PT', sans-serif;
   font-size: 40px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 1.2px;
+  color: #FCFCFA;;
+  text-align: center;
+}
+
+.custom-paragraph {
+  
+ 
+font-weight: 400px;
+text-align:center;
+  font-style: bold;
+  font-weight: 300;
+  line-height: 40px;
+  letter-spacing: 1.2px;
+  color: #FFF;
+  text-align: center;
+ 
+
+  margin: 0 auto; /* Center the paragraph */
+  padding: 0 0rem;
+}
+.custom-text{
+  color: #FFF;
+
+font-family: "Futura PT";
+font-size: 21px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 2.94px;
+}
+.custom-text1 {
+  color: #FFF;
+
+font-family: "Futura PT";
+font-size: 20px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+letter-spacing: 0.6px;
+ 
+height: 41.033px;
+flex-shrink: 0;
+}
+.custom-paragraph1 {
+  
+ 
+  font-weight: 300px;
+  text-align:center;
+    font-style: light;
+    font-size:25px;
+    font-weight: 300;
+    letter-spacing:0.75px;
+    color: #FFF;
+    text-align: center;
+    width: 100%;
+   
+    margin: 0 auto; /* Center the paragraph */
+    padding: 0 0rem;
+  }
+
+.custom-heading {
+  font-kerning: none;
+  font-feature-settings: 'liga' off;
+  font-family: 'Futura PT', sans-serif;
+  font-size:50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.5px;
   color: #ffff;
   text-align: center;
-  width: 981px;
+  width: 100%;
+  max-width: 981px;
   margin: 0 auto; /* Center the heading */
+  padding: 0 1rem;
 }

@@ -2,124 +2,85 @@ import React from "react";
 
 const Features = () => {
   return (
-    <section className="px-[149px] py-20 max-md:px-10 max-md:py-[60px]">
-      <div className="text-center mb-[60px]">
-        <h2 className="text-[40px] w-[614.113px]font-normal tracking-[1.2px] text-black mb-5">
-          Tired of slow responses, high MOQs, and outdated systems?
+    <section className="px-[149px] bg-[#0E0B06] w-full py-20 max-md:px-10 max-md:py-[60px] text-white">
+      <div className="text-center mb-[60px] w-full">
+
+        <h2 className=" custom-paragraph text-[40px] mt-[50px]">
+          Tired of slow responses, high MOQs,<br></br> and outdated systems?
         </h2>
-        <p className="custom-paragraph">
-          Connect with vetted experts, create breakthrough products, and scale with confidence—all in one platform.
+        <div className ="mt-[25px]">
+        <p className="custom-paragraph1 text-[25px]">
+          Connect with vetted experts, create breakthrough products, <br></br>and scale with confidence—all in one platform.
         </p>
+        </div>
+        
       </div>
-      <div className="grid grid-cols-[repeat(2,1fr)] gap-[30px] max-sm:grid-cols-[1fr]">
-        <div className="border p-[30px] rounded-2xl border-solid border-[#B9B9B9] flex flex-col">
-          <div className="mb-5">
-            <div className="w-10 h-10 rounded-full bg-[#2F6DE6] flex items-center justify-center mb-5">
-              <svg 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path 
-                  fillRule="evenodd" 
-                  clipRule="evenodd" 
-                  d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" 
-                  fill="white"
-                />
-              </svg>
-            </div>
-          </div>
-          <h3 className="text-xl font-normal tracking-[0.6px] text-black mb-2.5">
-            Location-Based Matching
-          </h3>
-          <p className="text-base font-light tracking-[0.48px] text-black">
-            Find vendors in your area or within your preferred geographic range
-            to simplify logistics and communication.
-          </p>
-        </div>
-        <div className="border p-[30px] rounded-2xl border-solid border-[#B9B9B9] flex flex-col">
-          <div className="mb-5">
-            <div className="w-10 h-10 rounded-full bg-[#2F6DE6] flex items-center justify-center mb-5">
-              <svg 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path 
-                  fillRule="evenodd" 
-                  clipRule="evenodd" 
-                  d="M9.86 18.0001L3.51 11.6501C2.83 10.9701 2.83 9.8401 3.51 9.1601L4.22 8.4501C4.9 7.7701 5.99 7.7701 6.68 8.4501L10.97 12.7401L17.32 6.3901C18 5.7101 19.09 5.7101 19.78 6.3901L20.49 7.1001C21.17 7.7801 21.17 8.9101 20.49 9.5901L12.14 17.9401C11.46 18.6201 10.54 18.6201 9.86 18.0001Z" 
-                  fill="white"
-                />
-              </svg>
-            </div>
-          </div>
-          <h3 className="text-xl font-normal tracking-[0.6px] text-black mb-2.5">
-            Vetted Experts
-          </h3>
-          <p className="text-base font-light tracking-[0.48px] text-black">
-            Every vendor is thoroughly vetted to ensure quality, reliability,
-            and expertise in the beauty industry.
-          </p>
-        </div>
-        <div className="border p-[30px] rounded-2xl border-solid border-[#B9B9B9] flex flex-col">
-          <div className="mb-5">
-            <div className="w-10 h-10 rounded-full bg-[#2F6DE6] flex items-center justify-center mb-5">
-              <svg 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path 
-                  fillRule="evenodd" 
-                  clipRule="evenodd" 
-                  d="M11.9997 2L3 5.99994V10.4999C3 15.7499 6.84978 20.6999 11.9997 22C17.1497 20.6999 21 15.7499 21 10.4999V5.99994L11.9997 2ZM15.5752 10.2499L11.2753 14.5499C11.1252 14.6999 10.9251 14.7749 10.7251 14.7749C10.525 14.7749 10.325 14.6999 10.1749 14.5499L8.42452 12.7999C8.1245 12.4999 8.1245 12.0249 8.42452 11.7249C8.72454 11.4249 9.19957 11.4249 9.49959 11.7249L10.7251 12.9499L14.5002 9.17494C14.8002 8.87492 15.2752 8.87492 15.5752 9.17494C15.8752 9.47496 15.8752 9.94989 15.5752 10.2499Z" 
-                  fill="white"
-                />
-              </svg>
-            </div>
-          </div>
-          <h3 className="text-xl font-normal tracking-[0.6px] text-black mb-2.5">
-            Specialized Capabilities
-          </h3>
-          <p className="text-base font-light tracking-[0.48px] text-black">
-            Filter vendors by their specific capabilities, from formulation to
-            packaging design and manufacturing.
-          </p>
-        </div>
-        <div className="border p-[30px] rounded-2xl border-solid border-[#B9B9B9] flex flex-col">
-          <div className="mb-5">
-            <div className="w-10 h-10 rounded-full bg-[#2F6DE6] flex items-center justify-center mb-5">
-              <svg 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path 
-                  fillRule="evenodd" 
-                  clipRule="evenodd" 
-                  d="M10 2H14C15.1 2 16 2.9 16 4V6H20C21.1 6 22 6.9 22 8V19C22 20.1 21.1 21 20 21H4C2.9 21 2 20.1 2 19V8C2 6.9 2.9 6 4 6H8V4C8 2.9 8.9 2 10 2ZM14 6V4H10V6H14ZM4 8V19H8V8H4ZM10 8V19H14V8H10ZM16 19H20V8H16V19Z" 
-                  fill="white"
-                />
-              </svg>
-            </div>
-          </div>
-          <h3 className="text-xl font-normal tracking-[0.6px] text-black mb-2.5">
-            Project Management
-          </h3>
-          <p className="text-base font-light tracking-[0.48px] text-black">
-            Manage all your beauty product development projects in one
-            centralized, intuitive dashboard.
-          </p>
-        </div>
+      <div className="flex justify-center items-center flex-wrap gap-[50px] flex-col">
+      <div className="border border-[#B9B9B9] rounded-[16px] w-[45%] p-4">
+  <div className="mb-[15px]
+">
+    <div className="flex items-center gap-5 ">
+      <div className="w-10 h-10 rounded-full bg-[#FFF] flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 21 21" fill="blue">
+          <path fillRule="evenodd" clipRule="evenodd" d="M17.7325 5.6662C18.0579 5.99163 18.0579 6.51927 17.7325 6.84471L8.56582 16.0114C8.24038 16.3368 7.71274 16.3368 7.38731 16.0114L3.22064 11.8447C2.8952 11.5193 2.8952 10.9916 3.22064 10.6662C3.54608 10.3408 4.07371 10.3408 4.39915 10.6662L7.97656 14.2436L16.554 5.6662C16.8794 5.34076 17.407 5.34076 17.7325 5.6662Z" fill="black"/>
+        </svg>
+      </div>
+      <div className="text-white text-[21px] custom-text">PEOPLE</div>
+    </div> 
+  </div>
+
+  <p className="custom-text1 text-[20px] mb-[25px]">
+    Every vendor is thoroughly vetted to ensure quality, reliability, and expertise in the beauty industry.
+  </p>
+</div>
+
+
+
+<div className="border border-[#B9B9B9] rounded-[16px] w-[45%] p-4">
+  <div className="mb-[15px]
+">
+    <div className="flex items-center gap-5 ">
+      <div className="w-10 h-10 rounded-full bg-[#FFF] flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+  <g clip-path="url(#clip0_13_222)">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M10.474 2.01237C8.70585 2.01237 7.01015 2.71475 5.75991 3.96499C4.50967 5.21523 3.80729 6.91093 3.80729 8.67904C3.80729 11.2608 5.48707 13.7659 7.32892 15.7101C8.2328 16.6642 9.13951 17.4453 9.82119 17.9881C10.0749 18.1901 10.2965 18.3584 10.474 18.4895C10.6514 18.3584 10.873 18.1901 11.1267 17.9881C11.8084 17.4453 12.7151 16.6642 13.619 15.7101C15.4608 13.7659 17.1406 11.2608 17.1406 8.67904C17.1406 6.91093 16.4382 5.21523 15.188 3.96499C13.9378 2.71475 12.2421 2.01237 10.474 2.01237ZM10.474 19.5124C10.0117 20.2057 10.0113 20.2054 10.0113 20.2054L10.0089 20.2039L10.0033 20.2001L9.98422 20.1872C9.968 20.1762 9.94485 20.1604 9.91525 20.1399C9.85607 20.0989 9.77101 20.0391 9.66378 19.9617C9.44941 19.8069 9.14592 19.5809 8.78298 19.2919C8.0584 18.7149 7.09011 17.8814 6.119 16.8563C4.21084 14.8422 2.14062 11.9307 2.14062 8.67904C2.14063 6.4689 3.0186 4.34928 4.5814 2.78648C6.1442 1.22368 8.26382 0.345703 10.474 0.345703C12.6841 0.345703 14.8037 1.22368 16.3665 2.78648C17.9293 4.34928 18.8073 6.4689 18.8073 8.67904C18.8073 11.9307 16.7371 14.8422 14.8289 16.8563C13.8578 17.8814 12.8895 18.7149 12.1649 19.2919C11.802 19.5809 11.4985 19.8069 11.2841 19.9617C11.1769 20.0391 11.0918 20.0989 11.0327 20.1399C11.0031 20.1604 10.9799 20.1762 10.9637 20.1872L10.9446 20.2001L10.939 20.2039L10.9373 20.205C10.9373 20.205 10.9362 20.2057 10.474 19.5124ZM10.474 19.5124L10.9362 20.2057C10.6563 20.3924 10.2912 20.3921 10.0113 20.2054L10.474 19.5124ZM10.474 7.01237C9.55348 7.01237 8.80729 7.75856 8.80729 8.67904C8.80729 9.59951 9.55348 10.3457 10.474 10.3457C11.3944 10.3457 12.1406 9.59951 12.1406 8.67904C12.1406 7.75856 11.3944 7.01237 10.474 7.01237ZM7.14062 8.67904C7.14062 6.83809 8.63301 5.3457 10.474 5.3457C12.3149 5.3457 13.8073 6.83809 13.8073 8.67904C13.8073 10.52 12.3149 12.0124 10.474 12.0124C8.63301 12.0124 7.14062 10.52 7.14062 8.67904Z" fill="#0E0B06"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_13_222">
+      <rect width="20" height="20" fill="white" transform="translate(0.476562 0.345703)"/>
+    </clipPath>
+  </defs>
+</svg>
+      </div>
+      <div className="text-white text-[21px] custom-text">PLACES</div>
+    </div> 
+  </div>
+
+  <p className="custom-text1 text-[20px] mb-[25px]">
+  Find vendors in your area or within your preferred geographic range to simplify logistics and communication.
+  </p>
+</div>
+<div className="border border-[#B9B9B9] rounded-[16px] w-[45%] p-4">
+  <div className="mb-[15px]
+">
+    <div className="flex items-center gap-5 ">
+      <div className="w-10 h-10 rounded-full bg-[#FFF] flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.22574 1.86125C9.60535 1.6425 10.0358 1.52734 10.474 1.52734C10.9121 1.52734 11.3426 1.64251 11.7222 1.86128C11.7228 1.86161 11.7234 1.86195 11.724 1.86228L17.5573 5.19561C17.8656 5.37362 18.1315 5.61493 18.3381 5.9026C18.3884 5.95291 18.433 6.01053 18.4703 6.07503C18.5024 6.13059 18.5274 6.18831 18.5456 6.24714C18.717 6.5917 18.8069 6.97187 18.8073 7.35811V14.0265C18.8068 14.4649 18.6911 14.8955 18.4717 15.275C18.2523 15.6546 17.937 15.9698 17.5573 16.189L17.5541 16.1908L11.724 19.5223C11.7235 19.5226 11.723 19.5229 11.7225 19.5232C11.4581 19.6756 11.1691 19.7777 10.87 19.8257C10.7522 19.8894 10.6173 19.9256 10.474 19.9256C10.3306 19.9256 10.1957 19.8894 10.0779 19.8257C9.77883 19.7777 9.48983 19.6756 9.2255 19.5232C9.22498 19.5229 9.22447 19.5226 9.22396 19.5223L3.39384 16.1908L3.39062 16.189C3.01095 15.9698 2.6956 15.6546 2.4762 15.275C2.2568 14.8955 2.14107 14.4649 2.14062 14.0265V7.35811C2.14102 6.97187 2.2309 6.5917 2.40231 6.24715C2.42047 6.18832 2.44548 6.13059 2.47762 6.07503C2.51493 6.01053 2.55956 5.95291 2.60986 5.9026C2.8164 5.61493 3.08231 5.37362 3.39062 5.19561L3.39384 5.19376L9.22574 1.86125ZM3.80729 7.80692V14.0251C3.8075 14.1712 3.84608 14.3145 3.91915 14.441C3.99203 14.567 4.09667 14.6718 4.22264 14.7449C4.22308 14.7451 4.22352 14.7454 4.22396 14.7456L9.64062 17.8408V11.1813L3.80729 7.80692ZM11.3073 11.1813V17.8408L16.724 14.7456C16.7244 14.7454 16.7248 14.7451 16.7253 14.7448C16.8512 14.6718 16.9559 14.567 17.0288 14.441C17.1019 14.3144 17.1405 14.1709 17.1406 14.0248V7.80692L11.3073 11.1813ZM16.2748 6.38234L10.8906 3.30566C10.7639 3.23252 10.6202 3.19401 10.474 3.19401C10.3277 3.19401 10.184 3.23252 10.0573 3.30566L10.0541 3.30751L4.67312 6.38234L10.474 9.73792L16.2748 6.38234Z" fill="#0E0B06"/>
+</svg>
+      </div>
+      <div className="text-white text-[21px] custom-text">THINGS</div>
+    </div> 
+  </div>
+
+  <p className="custom-text1 text-[20px] mb-[25px]">
+  Manage all your beauty product development projects in one centralized, intuitive dashboard.
+  </p>
+</div>
+
+
+
+         
       </div>
       
      
