@@ -57,14 +57,15 @@ const FAQ = () => {
             </AccordionItem>
           ))}
         </Accordion>
-
-        <div className="flex justify-between mt-16 text-white text-sm">
-          <div>NOUN 2025</div>
-          <div className="flex space-x-8">
-            <a href="#" className="hover:underline">Vendors</a>
-            <a href="#" className="hover:underline">Brands</a>
-            <a href="#" className="hover:underline">Sign In</a>
-          </div>
+      </div>
+      
+      {/* Footer section moved outside the max-w-4xl container and adjusted with full width */}
+      <div className="flex justify-between mt-16 text-white text-sm px-4 md:px-10 lg:px-[149px] w-full">
+        <div>NOUN 2025</div>
+        <div className="flex space-x-8">
+          <a href="#" className="hover:underline">Vendors</a>
+          <a href="#" className="hover:underline">Brands</a>
+          <a href="#" className="hover:underline">Sign In</a>
         </div>
       </div>
     </section>
