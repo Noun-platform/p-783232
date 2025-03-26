@@ -15,8 +15,8 @@ const Features = () => {
         </div>
       </div>
       
-      <div className="flex flex-col sm:flex-row justify-center items-stretch gap-4">
-        <div className="border border-[#B9B9B9] rounded-[16px] w-full sm:w-[calc(33.33%-16px)] p-4">
+      <div className="flex flex-col sm:flex-row flex-wrap justify-center items-stretch gap-4 sm:gap-[50px]">
+        <div className="border border-[#B9B9B9] rounded-[16px] w-full sm:w-[45%] p-4">
           <div className="mb-[15px]">
             <div className="flex items-center gap-5">
               <div className="w-10 h-10 rounded-full bg-[#FFF] flex items-center justify-center">
@@ -33,7 +33,7 @@ const Features = () => {
           </p>
         </div>
 
-        <div className="border border-[#B9B9B9] rounded-[16px] w-full sm:w-[calc(33.33%-16px)] p-4">
+        <div className="border border-[#B9B9B9] rounded-[16px] w-full sm:w-[45%] p-4">
           <div className="mb-[15px]">
             <div className="flex items-center gap-5">
               <div className="w-10 h-10 rounded-full bg-[#FFF] flex items-center justify-center">
@@ -57,7 +57,7 @@ const Features = () => {
           </p>
         </div>
         
-        <div className="border border-[#B9B9B9] rounded-[16px] w-full sm:w-[calc(33.33%-16px)] p-4">
+        <div className="border border-[#B9B9B9] rounded-[16px] w-full sm:w-[45%] p-4">
           <div className="mb-[15px]">
             <div className="flex items-center gap-5">
               <div className="w-10 h-10 rounded-full bg-[#FFF] flex items-center justify-center">
