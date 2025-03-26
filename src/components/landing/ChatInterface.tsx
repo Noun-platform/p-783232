@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { SendHorizontal, Loader2, Bot } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { generateBrief } from '@/components/utils/briefGenerator';
 import { toast } from 'sonner';
 import { hasApiKey } from '@/components/utils/openai';
+import { callOpenAI } from '@/components/utils/openai';
 
 type Message = {
   id: string;
@@ -22,7 +24,7 @@ const ChatInterface = ({ onBriefGenerated }: ChatInterfaceProps) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: "I'm your beauty product brief assistant. Describe your product idea, including target market, key ingredients, benefits, and any specific requirements. I'll create a comprehensive brief for manufacturers.",
+      content: "I'm your beauty product assistant. I can help answer questions about beauty products or create a comprehensive product brief for manufacturers. Just describe your product idea or ask me a question!",
       role: 'assistant',
       timestamp: new Date(),
     },
@@ -56,6 +58,89 @@ const ChatInterface = ({ onBriefGenerated }: ChatInterfaceProps) => {
     scrollToBottom();
   }, [messages]);
 
+  // Function to determine if input is a product brief request or a general question
+  const isProductBriefRequest = (text: string): boolean => {
+    // Keywords that suggest the user is describing a product
+    const productKeywords = [
+      'product', 'create', 'make', 'develop', 'formulate', 'beauty product',
+      'skincare', 'makeup', 'cosmetic', 'lotion', 'cream', 'serum', 'cleanser',
+      'moisturizer', 'foundation', 'lipstick', 'ingredient', 'packaging',
+      'formula', 'target market', 'anti-aging', 'manufacturing'
+    ];
+    
+    const lowerText = text.toLowerCase();
+    
+    // Check if the text contains product-related keywords and seems descriptive
+    const hasProductKeywords = productKeywords.some(keyword => lowerText.includes(keyword.toLowerCase()));
+    const isDescriptiveLength = text.length > 50; // Brief descriptions tend to be longer
+    
+    // If it's a question, it's likely not a product brief request
+    const isQuestion = lowerText.includes('?') || 
+                       lowerText.startsWith('what') || 
+                       lowerText.startsWith('how') || 
+                       lowerText.startsWith('can you') ||
+                       lowerText.startsWith('do you');
+    
+    return hasProductKeywords && isDescriptiveLength && !isQuestion;
+  };
+
+  const handleGeneralQuestion = async (userMessage: Message) => {
+    try {
+      const systemPrompt = `
+      You are an AI assistant specializing in beauty products and formulation. 
+      Your role is to provide helpful, informative responses about beauty products, 
+      ingredients, formulation, manufacturing, and related topics.
+      
+      Be concise, accurate, and helpful. If you don't know something, admit it rather than making up information.
+      
+      If the user seems to be describing a product they want to create, suggest they provide more details about 
+      their product idea so you can generate a comprehensive brief for manufacturers.
+      `;
+      
+      const response = await callOpenAI(userMessage.content, systemPrompt);
+      
+      const aiMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        content: response,
+        role: 'assistant',
+        timestamp: new Date(),
+      };
+      
+      setMessages((prev) => [...prev.filter(msg => msg.id !== 'processing'), aiMessage]);
+      
+    } catch (error) {
+      console.error('Error handling general question:', error);
+      handleResponseError(error);
+    }
+  };
+
+  const handleResponseError = (error: any) => {
+    // Remove the processing message
+    setMessages((prev) => prev.filter(msg => msg.id !== 'processing'));
+    
+    let errorContent = "I'm sorry, I couldn't process your request. Please try again.";
+    
+    // Check for specific errors
+    if (error instanceof Error) {
+      if (error.message.includes('quota exceeded')) {
+        errorContent = "OpenAI API quota exceeded. Please check your billing details or try a different API key in your .env file.";
+      } else if (error.message.includes('invalid_api_key')) {
+        errorContent = "Invalid OpenAI API key. Please check your API key in your .env file.";
+      } else if (error.message.includes('No API key provided')) {
+        errorContent = "Please add your VITE_OPENAI_API_KEY to the .env file.";
+      }
+    }
+    
+    const errorMessage: Message = {
+      id: (Date.now() + 1).toString(),
+      content: errorContent,
+      role: 'assistant',
+      timestamp: new Date(),
+    };
+    
+    setMessages((prev) => [...prev, errorMessage]);
+  };
+
   const handleSendMessage = async () => {
     if (!input.trim() || isProcessing) return;
     
@@ -79,7 +164,7 @@ const ChatInterface = ({ onBriefGenerated }: ChatInterfaceProps) => {
     // Add a processing message
     const processingMessage: Message = {
       id: 'processing',
-      content: "I'm generating your product brief, please wait...",
+      content: "I'm processing your message, please wait...",
       role: 'assistant',
       timestamp: new Date(),
     };
@@ -87,52 +172,32 @@ const ChatInterface = ({ onBriefGenerated }: ChatInterfaceProps) => {
     setMessages((prev) => [...prev, processingMessage]);
     
     try {
-      console.log('Starting brief generation');
-      const brief = await generateBrief(userMessage.content);
-      console.log('Brief generated successfully:', brief);
-      
-      // Remove the processing message and add the success message
-      setMessages((prev) => prev.filter(msg => msg.id !== 'processing'));
-      
-      const aiMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        content: "I've created your product brief based on the information provided. You can view the structured brief in the panel to the right.",
-        role: 'assistant',
-        timestamp: new Date(),
-      };
-      
-      setMessages((prev) => [...prev, aiMessage]);
-      onBriefGenerated(brief);
-      toast.success('Product brief generated successfully!');
-      
-    } catch (error) {
-      console.error('Error generating brief:', error);
-      
-      // Remove the processing message and add the error message
-      setMessages((prev) => prev.filter(msg => msg.id !== 'processing'));
-      
-      let errorContent = "I'm sorry, I couldn't generate a brief based on the information provided. Please try again with more details about your product.";
-      
-      // Check for specific errors
-      if (error instanceof Error) {
-        if (error.message.includes('quota exceeded')) {
-          errorContent = "OpenAI API quota exceeded. Please check your billing details or try a different API key in your .env file.";
-        } else if (error.message.includes('invalid_api_key')) {
-          errorContent = "Invalid OpenAI API key. Please check your API key in your .env file.";
-        } else if (error.message.includes('No API key provided')) {
-          errorContent = "Please add your VITE_OPENAI_API_KEY to the .env file.";
-        }
+      // Determine if this is a product brief request or general question
+      if (isProductBriefRequest(userMessage.content)) {
+        console.log('Generating product brief');
+        const brief = await generateBrief(userMessage.content);
+        
+        // Remove the processing message and add the success message
+        setMessages((prev) => prev.filter(msg => msg.id !== 'processing'));
+        
+        const aiMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          content: "I've created your product brief based on the information provided. You can view the structured brief in the panel to the right.",
+          role: 'assistant',
+          timestamp: new Date(),
+        };
+        
+        setMessages((prev) => [...prev, aiMessage]);
+        onBriefGenerated(brief);
+        toast.success('Product brief generated successfully!');
+      } else {
+        console.log('Handling general question');
+        await handleGeneralQuestion(userMessage);
       }
       
-      const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        content: errorContent,
-        role: 'assistant',
-        timestamp: new Date(),
-      };
-      
-      setMessages((prev) => [...prev, errorMessage]);
-      
+    } catch (error) {
+      console.error('Error processing message:', error);
+      handleResponseError(error);
     } finally {
       setIsProcessing(false);
     }
@@ -185,7 +250,7 @@ const ChatInterface = ({ onBriefGenerated }: ChatInterfaceProps) => {
       <div className="p-4 border-t border-[#E3E3E3] bg-white/80">
         <div className="flex items-end gap-2">
           <Textarea
-            placeholder="Describe your beauty product idea..."
+            placeholder="Ask a question or describe your beauty product idea..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
