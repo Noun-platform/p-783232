@@ -49,30 +49,30 @@ const Hero = () => {
           </nav>
         </div>
         <div className="flex-1 flex items-center justify-center text-center">
-          <div className="text-white max-w-[700px] px-5 py-0 relative z-10">
-            <h1 className="custom-header mb-12">
-              Cut the noise. Build with the best.
+          <div className="text-white  px-5 py-0 relative z-10">
+            <h1 className="custom-heading text-white ">
+              Find the right vendors for your beauty brand
             </h1>
-            <div className="custom-div mb-12">
+            <div className="custom-div mb-[46px]">
               Connect, create, and scale—all in one platform
             </div>
             <div className="flex gap-4 justify-center max-sm:flex-col max-sm:items-center">
               <button
-                className="w-[204px] bg-[#FCF890] py- px-4 h-[50px] rounded-full 
-                text-[#000000] text-center text-[16px] font-normal 
+                className="w-[170px] bg-[#FCF890] py- px-4 h-[50px] rounded-full 
+                text-[#000000] text-center text-[18px] font-thin 
                 leading-normal tracking-[0.96px] capitalize 
                 antialiased"
               >
-                Try our AI Brief
+                Connect
               </button>
               <button
-                className="w-[204px]  border-[1px] border-[#FFFFFF] py- px-4 h-[50px] rounded-full 
-                text-[#FFFFFF] text-center text-[16px] font-normal 
-                leading-normal tracking-[0.96px] capitalize 
-                antialiased"
-              >
-                How it works
-              </button>
+  className=" w-[170px] border-[1px] border-[#FCFCFA] px-4 h-[50px] rounded-full 
+             text-[#FCFCFA] text-center text-[18px] font-thin 
+             leading-normal tracking-[0.96px] capitalize antialiased"
+>
+  Try our AI Brief
+</button>
+
             </div>
           </div>
         </div>
