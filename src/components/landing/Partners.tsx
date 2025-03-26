@@ -26,11 +26,11 @@ const Partners = () => {
 
   return (
     <section className="px-4 md:px-10 lg:px-[149px] py-10 md:py-20">
-      <div className="text-center mb-[40px] md:mb-[60px]">
-        <h2 className="text-2xl md:text-3xl lg:text-[40px] font-normal tracking-[1.2px] text-black mb-5">
+      <div className="text-center mb-[30px] md:mb-[60px]">
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[40px] font-normal tracking-[1.2px] text-black mb-5">
           Our vendors have also worked with
         </h2>
-        <p className="text-lg md:text-xl lg:text-[25px] font-light tracking-[0.75px] text-black max-w-[614px] mx-auto my-0 px-4">
+        <p className="text-base sm:text-lg md:text-xl lg:text-[25px] font-light tracking-[0.75px] text-black max-w-[614px] mx-auto my-0 px-4">
           No more gatekeeping, have access to the best of the best.
         </p>
       </div>
@@ -40,7 +40,7 @@ const Partners = () => {
             key={index}
             src={logo}
             alt="Partner"
-            className="w-full max-w-[120px] md:max-w-[149px] h-auto max-h-[61px] object-contain"
+            className="w-full max-w-[100px] sm:max-w-[120px] md:max-w-[149px] h-auto max-h-[61px] object-contain"
           />
         ))}
       </div>
