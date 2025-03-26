@@ -50,9 +50,14 @@ const HowItWorks: React.FC = () => {
         ))}
       </div>
 
-      <Button className="mt-10 bg-[#FCF890] text-black rounded-full px-8 py-3 font-normal hover:bg-[#f5f07a] transition-colors">
-        Chat With Our Founder
-      </Button>
+      <button
+                className="mt-[10px] w-[250px] bg-[#FCF890] py-2 px-4 h-[50px] rounded-full 
+                text-[#000000] text-center text-[18px] font-thin 
+                leading-normal tracking-[0.96px] capitalize 
+                antialiased"
+              >
+              Chat with our Founder
+              </button>
     </section>
   );
 };

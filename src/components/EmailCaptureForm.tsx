@@ -56,13 +56,17 @@ const EmailCaptureForm = ({ onSubmit, buttonText = 'Get Started' }: EmailCapture
             </FormItem>
           )}
         />
-        <Button 
+        <button 
           type="submit" 
+          className="w-[170px] bg-[#FCF890] py-2 px-4 h-[50px] rounded-full 
+                text-[#000000] text-center text-[18px] font-thin 
+                leading-normal tracking-[0.96px] capitalize 
+                antialiased"
           disabled={isSubmitting}
-          className="h-12 px-8 rounded-full bg-[#F7D83D] text-black font-medium hover:bg-[#F7D83D]/90 w-auto min-w-[200px]"
+            
         >
           {isSubmitting ? 'Submitting...' : buttonText}
-        </Button>
+        </button>
       </form>
     </Form>
   );

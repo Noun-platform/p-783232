@@ -50,17 +50,7 @@ const BriefGeneratorSection = ({
           </>
         )}
         
-        {userEmail && (
-          <div className="mt-8 sm:mt-12 text-center">
-            <Button 
-              variant="outline" 
-              className="border-[#477A95] text-[#477A95] hover:bg-[#477A95]/10 group"
-            >
-              Learn more about our product brief generator
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </div>
-        )}
+       
       </div>
     </section>
   );
