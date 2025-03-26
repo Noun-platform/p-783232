@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Hero from "@/components/landing/Hero";
 import Features from "@/components/landing/Features";
@@ -46,9 +45,6 @@ const Index = () => {
       <Hero />
       <Features />
       <BrandSection />
-      
-       
-       
       <Partners />
       <HowItWorks />
       <BriefGeneratorSection 

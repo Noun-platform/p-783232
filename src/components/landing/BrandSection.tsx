@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 const BrandSection = () => {
   return (
-    <section className="relative w-full mt-10 sm:mt-16 md:mt-20 mx-auto overflow-hidden">
+    <section className="relative w-full mx-auto overflow-hidden">
       <div className="relative h-[300px] sm:h-[400px] md:h-[500px] w-full mx-auto overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 w-full h-full">
