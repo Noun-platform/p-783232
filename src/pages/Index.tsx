@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Hero from "@/components/landing/Hero";
 import Features from "@/components/landing/Features";
+import BrandSection from "@/components/landing/BrandSection";
 import ImageSection from "@/components/landing/ImageSection";
 import Partners from "@/components/landing/Partners";
 import HowItWorks from "@/components/landing/HowItWorks";
@@ -43,6 +44,7 @@ const Index = () => {
     <main className="w-full bg-white mx-auto my-0 overflow-x-hidden">
       <Hero />
       <Features />
+      <BrandSection />
       <ImageSection
         imageUrl="/image2.png"
         altText="Create"
