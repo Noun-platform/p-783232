@@ -4,15 +4,22 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { saveEmail } from "@/utils/emailStorage";
 
 const AiBeta = () => {
   const [email, setEmail] = useState("");
   const [showAssistant, setShowAssistant] = useState(false);
   const [message, setMessage] = useState("");
+  const [emailSaved, setEmailSaved] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setShowAssistant(true);
+    if (email.trim()) {
+      // Save the email to storage
+      saveEmail(email.trim());
+      setEmailSaved(true);
+      setShowAssistant(true);
+    }
   };
 
   return (
@@ -30,15 +37,18 @@ const AiBeta = () => {
         <div className="max-w-md mx-auto">
           <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
             <div>
-               
               <input
-                      type="text"
-                      
-                      placeholder="Enter your email "
-                      className=" w-[90%] h-[40px] rounded-[24px] border-[0.35px] border-gray-custom pl-[16px]"
-                    />
-            </div><div className="flex gap-4 justify-center max-sm:flex-col max-sm:items-center">
-            <button
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="w-[90%] h-[40px] rounded-[24px] border-[0.35px] border-gray-custom pl-[16px]"
+                required
+              />
+            </div>
+            <div className="flex gap-4 justify-center max-sm:flex-col max-sm:items-center">
+              <button
+                type="submit"
                 className="w-[204px] bg-[#FCF890] py- px-4 h-[50px] rounded-full 
                 text-[#000000] text-center text-[16px] font-normal 
                 leading-normal tracking-[0.96px] capitalize 
@@ -46,7 +56,7 @@ const AiBeta = () => {
               >
                 Try our AI Brief
               </button>
-              </div>
+            </div>
           </form>
         </div>
       ) : (
