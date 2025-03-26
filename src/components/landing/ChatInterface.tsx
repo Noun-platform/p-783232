@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { SendHorizontal, Loader2, Bot } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -60,28 +59,52 @@ const ChatInterface = ({ onBriefGenerated }: ChatInterfaceProps) => {
 
   // Function to determine if input is a product brief request or a general question
   const isProductBriefRequest = (text: string): boolean => {
-    // Keywords that suggest the user is describing a product
+    // Enhanced detection for product brief requests
     const productKeywords = [
       'product', 'create', 'make', 'develop', 'formulate', 'beauty product',
       'skincare', 'makeup', 'cosmetic', 'lotion', 'cream', 'serum', 'cleanser',
-      'moisturizer', 'foundation', 'lipstick', 'ingredient', 'packaging',
-      'formula', 'target market', 'anti-aging', 'manufacturing'
+      'moisturizer', 'foundation', 'lipstick', 'lip', 'crayon', 'ingredient', 
+      'packaging', 'formula', 'target market', 'anti-aging', 'manufacturing',
+      'brief', 'formulation', 'shade', 'gloss', 'matte', 'color'
     ];
     
     const lowerText = text.toLowerCase();
     
-    // Check if the text contains product-related keywords and seems descriptive
-    const hasProductKeywords = productKeywords.some(keyword => lowerText.includes(keyword.toLowerCase()));
-    const isDescriptiveLength = text.length > 50; // Brief descriptions tend to be longer
+    // Check minimum length - even a short product description should be at least 15 chars
+    if (text.length < 15) return false;
     
-    // If it's a question, it's likely not a product brief request
+    // Count product-related keywords
+    const keywordCount = productKeywords.reduce((count, keyword) => {
+      return lowerText.includes(keyword.toLowerCase()) ? count + 1 : count;
+    }, 0);
+    
+    // If it contains a clear question marker and few product keywords, it's likely a question
     const isQuestion = lowerText.includes('?') || 
-                       lowerText.startsWith('what') || 
-                       lowerText.startsWith('how') || 
-                       lowerText.startsWith('can you') ||
-                       lowerText.startsWith('do you');
+                      lowerText.startsWith('what') || 
+                      lowerText.startsWith('how') || 
+                      lowerText.startsWith('why') ||
+                      lowerText.startsWith('can you') ||
+                      lowerText.startsWith('do you') ||
+                      lowerText.startsWith('could you');
     
-    return hasProductKeywords && isDescriptiveLength && !isQuestion;
+    // Obvious product brief requests often mention specific product types
+    const mentionsProductType = /lip|cream|serum|foundation|moisturizer|cleanser|mask|oil|sunscreen/i.test(lowerText);
+    
+    // Decision logic:
+    // 1. Contains multiple product keywords AND mentions specific product type → Brief
+    // 2. High keyword count but also is a question → General Question
+    // 3. Mentions specific product type and has some keywords → Brief
+    
+    if (keywordCount >= 3 && mentionsProductType && !isQuestion) {
+      return true;
+    } else if (keywordCount >= 2 && mentionsProductType) {
+      return true;
+    } else if (isQuestion && keywordCount < 2) {
+      return false;
+    }
+    
+    // Default to treating as product brief if it has multiple keywords
+    return keywordCount >= 3;
   };
 
   const handleGeneralQuestion = async (userMessage: Message) => {
@@ -93,8 +116,11 @@ const ChatInterface = ({ onBriefGenerated }: ChatInterfaceProps) => {
       
       Be concise, accurate, and helpful. If you don't know something, admit it rather than making up information.
       
-      If the user seems to be describing a product they want to create, suggest they provide more details about 
-      their product idea so you can generate a comprehensive brief for manufacturers.
+      If the user seems to be describing a product they want to create but their description is very vague,
+      provide a helpful response that guides them to provide more specific details about their product idea.
+      
+      If they ask about creating a specific product type (like "how to make lip gloss"), provide general 
+      information about that product type and what's typically involved in creating it.
       `;
       
       const response = await callOpenAI(userMessage.content, systemPrompt);
