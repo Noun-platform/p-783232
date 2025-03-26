@@ -16,12 +16,12 @@ const AiBeta = () => {
   };
 
   return (
-    <section className="px-[149px] py-20 max-md:px-10 max-md:py-[60px] border-t border-b border-gray-200">
+    <section className="px-4 md:px-10 lg:px-[149px] py-10 md:py-20 border-t border-b border-gray-200">
       <div className="text-center mb-10">
-        <h2 className="text-[40px] font-normal tracking-[1.2px] text-black mb-5">
+        <h2 className="text-2xl md:text-3xl lg:text-[40px] font-normal tracking-[1.2px] text-black mb-5">
           Be the first to try our beta AI assistant
         </h2>
-        <p className="text-[25px] font-light tracking-[0.75px] text-black max-w-[614px] mx-auto my-0">
+        <p className="text-lg md:text-xl lg:text-[25px] font-light tracking-[0.75px] text-black max-w-[614px] mx-auto my-0">
           Create detailed products briefs for manufacturers in seconds.
         </p>
       </div>
@@ -29,29 +29,31 @@ const AiBeta = () => {
       {!showAssistant ? (
         <div className="max-w-md mx-auto">
           <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-            <div>
-               
+            <div className="w-full flex justify-center">
               <input
-                      type="text"
-                      
-                      placeholder="Enter your email "
-                      className=" w-[90%] h-[40px] rounded-[24px] border-[0.35px] border-gray-custom pl-[16px]"
-                    />
-            </div><div className="flex gap-4 justify-center max-sm:flex-col max-sm:items-center">
-            <button
-                className="w-[204px] bg-[#FCF890] py- px-4 h-[50px] rounded-full 
+                type="text"
+                placeholder="Enter your email "
+                className="w-full max-w-[90%] h-[40px] rounded-[24px] border-[0.35px] border-gray-custom pl-[16px]"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="flex gap-4 justify-center max-sm:flex-col max-sm:items-center">
+              <button
+                className="w-[204px] bg-[#FCF890] py-2 px-4 h-[50px] rounded-full 
                 text-[#000000] text-center text-[16px] font-normal 
                 leading-normal tracking-[0.96px] capitalize 
                 antialiased"
+                type="submit"
               >
                 Try our AI Brief
               </button>
-              </div>
+            </div>
           </form>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <div className="border rounded-xl p-6 bg-white shadow-sm">
+          <div className="border rounded-xl p-4 md:p-6 bg-white shadow-sm">
             <div className="flex items-start mb-4">
               <div className="w-8 h-8 rounded-md bg-amber-700 flex items-center justify-center mr-3 flex-shrink-0">
                 <span className="text-white text-sm">AI</span>
@@ -80,7 +82,7 @@ const AiBeta = () => {
             </p>
           </div>
           
-          <div className="border rounded-xl p-6 bg-white shadow-sm flex flex-col items-center justify-center text-center">
+          <div className="border rounded-xl p-4 md:p-6 bg-white shadow-sm flex flex-col items-center justify-center text-center">
             <div className="w-12 h-12 rounded-full border border-amber-200 flex items-center justify-center mb-4">
               <div className="w-6 h-6 text-amber-500">⬦</div>
             </div>

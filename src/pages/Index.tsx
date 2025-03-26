@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Hero from "@/components/landing/Hero";
@@ -7,6 +8,7 @@ import Partners from "@/components/landing/Partners";
 import HowItWorks from "@/components/landing/HowItWorks";
 import BriefGeneratorSection from "@/components/landing/BriefGeneratorSection";
 import { toast } from 'sonner';
+
 const Index = () => {
   const [brief, setBrief] = useState<any>(null);
   const [userEmail, setUserEmail] = useState<string | null>(localStorage.getItem('user_email'));
@@ -24,7 +26,7 @@ const Index = () => {
   };
 
   return (
-    <main className="w-full bg-white mx-auto my-0">
+    <main className="w-full bg-white mx-auto my-0 overflow-x-hidden">
       <Hero />
       <Features />
       <ImageSection
@@ -42,15 +44,14 @@ const Index = () => {
           Try our AI Brief
         </button>
       </div>
-      <div className ="mt-[50px]">
-      <ImageSection
-        imageUrl="https://cdn.builder.io/api/v1/image/assets/TEMP/3f759d38909503b26b802d5d58a0744764ac0769"
-        altText="Infrastructure"
-        overlayText="You've got the idea, we've got the infrastructure"
-      />
+      <div className="mt-[50px]">
+        <ImageSection
+          imageUrl="https://cdn.builder.io/api/v1/image/assets/TEMP/3f759d38909503b26b802d5d58a0744764ac0769"
+          altText="Infrastructure"
+          overlayText="You've got the idea, we've got the infrastructure"
+        />
       </div>
       <Partners />
-
       <HowItWorks />
       <BriefGeneratorSection 
           userEmail={userEmail} 
