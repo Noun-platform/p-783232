@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Button } from "@/components/ui/button";
 
 const HowItWorks = () => {
   return (
@@ -19,9 +20,9 @@ const HowItWorks = () => {
         <div className="flex flex-col">
           <div className="relative h-[240px] mb-4 overflow-hidden rounded-lg">
             <img
-              src="/lovable-uploads/6aeb96bd-16eb-41e8-8eef-44856e6cbc6c.png"
+              src="/lovable-uploads/861db2c6-dfd5-46c9-8b5b-e9bfc26967d4.png"
               alt="Create Your Profile"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-left-top"
             />
             <div className="absolute inset-0 flex items-center justify-center bg-black/30">
               <h3 className="text-white text-xl font-medium tracking-wider uppercase text-center">
@@ -39,9 +40,9 @@ const HowItWorks = () => {
         <div className="flex flex-col">
           <div className="relative h-[240px] mb-4 overflow-hidden rounded-lg">
             <img
-              src="https://images.unsplash.com/photo-1522204538344-922f76ecc041?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              src="/lovable-uploads/861db2c6-dfd5-46c9-8b5b-e9bfc26967d4.png"
               alt="Match With Vendors"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-center"
             />
             <div className="absolute inset-0 flex items-center justify-center bg-black/30">
               <h3 className="text-white text-xl font-medium tracking-wider uppercase text-center">
@@ -59,9 +60,9 @@ const HowItWorks = () => {
         <div className="flex flex-col">
           <div className="relative h-[240px] mb-4 overflow-hidden rounded-lg">
             <img
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              src="/lovable-uploads/861db2c6-dfd5-46c9-8b5b-e9bfc26967d4.png"
               alt="Collaborate & Create"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-right-top"
             />
             <div className="absolute inset-0 flex items-center justify-center bg-black/30">
               <h3 className="text-white text-xl font-medium tracking-wider uppercase text-center">
@@ -77,9 +78,9 @@ const HowItWorks = () => {
       </div>
 
       <div className="flex justify-center">
-        <button className="bg-[#FCF890] text-black rounded-full px-8 py-3 font-normal hover:bg-[#f5f07a] transition-colors">
+        <Button className="bg-[#FCF890] text-black rounded-full px-8 py-3 font-normal hover:bg-[#f5f07a] transition-colors">
           Chat With Our Founder
-        </button>
+        </Button>
       </div>
     </section>
   );
