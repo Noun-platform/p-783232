@@ -50,7 +50,7 @@ const Hero = () => {
         </div>
         <div className="flex-1 flex items-center justify-center text-center">
           <div className="text-white max-w-[700px] px-5 py-0 relative z-10">
-            <h1 className="custom-heading text-5xl font-normal tracking-wide leading-[1.2] mb-6 max-sm:text-[36px] max-sm:leading-[1.3]">
+            <h1 className="custom-header mb-12">
               Cut the noise. Build with the best.
             </h1>
             <div className="custom-div mb-12">

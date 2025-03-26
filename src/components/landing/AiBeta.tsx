@@ -30,28 +30,23 @@ const AiBeta = () => {
         <div className="max-w-md mx-auto">
           <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-1"
+               
+              <input
+                      type="text"
+                      
+                      placeholder="Enter your email "
+                      className=" w-[90%] h-[40px] rounded-[24px] border-[0.35px] border-gray-custom pl-[16px]"
+                    />
+            </div><div className="flex gap-4 justify-center max-sm:flex-col max-sm:items-center">
+            <button
+                className="w-[204px] bg-[#FCF890] py- px-4 h-[50px] rounded-full 
+                text-[#000000] text-center text-[16px] font-normal 
+                leading-normal tracking-[0.96px] capitalize 
+                antialiased"
               >
-                Email Address
-              </label>
-              <Input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                required
-                className="w-full"
-              />
-            </div>
-            <Button 
-              type="submit" 
-              className="w-full bg-[#2F6DE6] text-white py-2 rounded-md hover:bg-blue-700 transition-colors"
-            >
-              Try AI Assistant
-            </Button>
+                Try our AI Brief
+              </button>
+              </div>
           </form>
         </div>
       ) : (
