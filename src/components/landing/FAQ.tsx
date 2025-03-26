@@ -6,7 +6,6 @@ import {
   AccordionItem, 
   AccordionTrigger 
 } from "@/components/ui/accordion";
-import { Plus } from "lucide-react";
 
 const FAQ = () => {
   const faqItems = [
@@ -47,12 +46,12 @@ const FAQ = () => {
             <AccordionItem 
               key={index} 
               value={`item-${index}`}
-              className="border border-white rounded-full overflow-hidden px-6 border-opacity-50"
+              className="border border-white rounded-full overflow-hidden px-6 border-opacity-50 data-[state=open]:rounded-[20px]"
             >
               <AccordionTrigger className="text-white py-4 text-base md:text-lg font-light hover:no-underline">
-                {item.question}
+                <span className="pl-2">{item.question}</span>
               </AccordionTrigger>
-              <AccordionContent className="text-white text-sm md:text-base font-light pb-5 pl-4">
+              <AccordionContent className="text-white text-sm md:text-base font-light pb-5 pl-6">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>
