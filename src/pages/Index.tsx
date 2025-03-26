@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Hero from "@/components/landing/Hero";
 import Features from "@/components/landing/Features";
 import ImageSection from "@/components/landing/ImageSection";
@@ -10,18 +9,35 @@ import { toast } from 'sonner';
 const Index = () => {
   const [brief, setBrief] = useState<any>(null);
   const [userEmail, setUserEmail] = useState<string | null>(localStorage.getItem('user_email'));
-  const navigate = useNavigate();
+
 
   const handleBriefGenerated = (newBrief: any) => {
     setBrief(newBrief);
     toast.success('Product brief generated successfully!');
   };
 
-  const handleEmailSubmit = (email: string) => {
-    localStorage.setItem('user_email', email);
-    setUserEmail(email);
-    toast.success('Thank you for subscribing!');
+  const handleEmailSubmit = async (email: string) => {
+    try {
+      setUserEmail(email); // This will cause the UI to re-render
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwHKvLMrVET7-TnGl1xejXOdAeK4E54MdpM6hQrRSrQu5B5IK30PuJOtATrfQ0VlODW/exec";
+  
+      const form = new FormData();
+      form.append("email", email);
+  
+      await fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        body: form, 
+      });
+  
+      toast.success("Thank you for subscribing!");
+    } catch (error) {
+      console.error("Failed to submit email:", error);
+      toast.error("Failed to subscribe. Please try again.");
+    }
   };
+
+
 
   return (
     <main className="w-full bg-white mx-auto my-0">
