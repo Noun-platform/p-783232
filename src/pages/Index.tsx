@@ -7,6 +7,7 @@ import ImageSection from "@/components/landing/ImageSection";
 import Partners from "@/components/landing/Partners";
 import HowItWorks from "@/components/landing/HowItWorks";
 import BriefGeneratorSection from "@/components/landing/BriefGeneratorSection";
+import FAQ from "@/components/landing/FAQ";
 import { toast } from 'sonner';
 
 const Index = () => {
@@ -75,6 +76,7 @@ const Index = () => {
           onBriefGenerated={handleBriefGenerated}
           brief={brief}
       />
+      <FAQ />
     </main>
   );
 };
