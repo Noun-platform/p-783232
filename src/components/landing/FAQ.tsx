@@ -59,8 +59,8 @@ const FAQ = () => {
         </Accordion>
       </div>
       
-      {/* Footer section moved outside the max-w-4xl container and adjusted with full width */}
-      <div className="flex justify-between mt-16 text-white text-sm px-4 md:px-10 lg:px-[149px] w-full">
+      {/* Footer with no horizontal padding to extend to the edges */}
+      <div className="flex justify-between mt-16 text-white text-sm w-full">
         <div>NOUN 2025</div>
         <div className="flex space-x-8">
           <a href="#" className="hover:underline">Vendors</a>
