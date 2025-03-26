@@ -1,8 +1,19 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Hero = () => {
+  const isMobile = useIsMobile();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const scrollToBriefGenerator = () => {
     const briefGeneratorSection = document.getElementById("brief-generator");
     if (briefGeneratorSection) {
@@ -29,32 +40,65 @@ const Hero = () => {
               className="h-full w-auto object-contain"
             />
           </div>
-          <nav className="flex-1 flex justify-end gap-4 md:gap-10 max-sm:hidden">
-            <a
-              href="#how-it-works"
-              className="text-center custom-nav-link hover:text-white transition-colors text-sm font-normal tracking-wide"
-            >
-              How it works
-            </a>
-            <a
-              href="#vendors"
-              className="text-center custom-nav-link hover:text-white transition-colors text-sm font-normal tracking-wide"
-            >
-              Vendors
-            </a>
-            <a
-              href="#projects"
-              className="text-center custom-nav-link hover:text-white transition-colors text-sm font-normal tracking-wide"
-            >
-              Projects
-            </a>
-            <a
-              href="https://noun-project.vercel.app/apps/loginLanding"
-              className="text-center custom-nav-link hover:text-white transition-colors text-sm font-normal tracking-wide"
-            >
-              Sign In
-            </a>
-          </nav>
+          
+          {isMobile ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="text-white p-2 focus:outline-none">
+                  <Menu size={24} />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="bg-black/80 border-gray-700 text-white w-[200px]">
+                <DropdownMenuItem asChild>
+                  <a href="#how-it-works" className="w-full px-4 py-2 text-white hover:bg-gray-700">
+                    How it works
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a href="#vendors" className="w-full px-4 py-2 text-white hover:bg-gray-700">
+                    Vendors
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a href="#projects" className="w-full px-4 py-2 text-white hover:bg-gray-700">
+                    Projects
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a href="https://noun-project.vercel.app/apps/loginLanding" className="w-full px-4 py-2 text-white hover:bg-gray-700">
+                    Sign In
+                  </a>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <nav className="flex-1 flex justify-end gap-4 md:gap-10">
+              <a
+                href="#how-it-works"
+                className="text-center custom-nav-link hover:text-white transition-colors text-sm font-normal tracking-wide"
+              >
+                How it works
+              </a>
+              <a
+                href="#vendors"
+                className="text-center custom-nav-link hover:text-white transition-colors text-sm font-normal tracking-wide"
+              >
+                Vendors
+              </a>
+              <a
+                href="#projects"
+                className="text-center custom-nav-link hover:text-white transition-colors text-sm font-normal tracking-wide"
+              >
+                Projects
+              </a>
+              <a
+                href="https://noun-project.vercel.app/apps/loginLanding"
+                className="text-center custom-nav-link hover:text-white transition-colors text-sm font-normal tracking-wide"
+              >
+                Sign In
+              </a>
+            </nav>
+          )}
         </div>
         <div className="flex-1 flex items-center justify-center text-center">
           <div className="text-white px-5 py-0 relative z-10">
