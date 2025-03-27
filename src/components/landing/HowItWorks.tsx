@@ -51,7 +51,7 @@ const HowItWorks: React.FC = () => {
       </div>
 
       <button
-                className="mt-[10px] w-[250px] bg-[#FCF890] py-2 px-4 h-[50px] rounded-full 
+                className="mt-[50px] w-[250px] bg-[#FCF890] py-2 px-4 h-[50px] rounded-full 
                 text-[#000000] text-center text-[18px] font-thin 
                 leading-normal tracking-[0.96px] capitalize 
                 antialiased"
