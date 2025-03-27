@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Hero from "@/components/landing/Hero";
 import Features from "@/components/landing/Features";
 import BrandSection from "@/components/landing/BrandSection";
@@ -13,6 +13,10 @@ const Index = () => {
   const [brief, setBrief] = useState<any>(null);
   const [userEmail, setUserEmail] = useState<string | null>(localStorage.getItem('user_email'));
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   const handleBriefGenerated = (newBrief: any) => {
     setBrief(newBrief);
     toast.success('Product brief generated successfully!');
