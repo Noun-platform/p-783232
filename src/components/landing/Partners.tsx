@@ -2,6 +2,10 @@
 import React from "react";
 
 const Partners = () => {
+  const handleJoinClick = () => {
+    window.location.href = "https://noun-project.vercel.app/apps/loginLanding";
+  };
+  
   // Array of partner logo URLs
   const partnerLogos = [
     "partner1.png",
@@ -24,6 +28,7 @@ const Partners = () => {
      
     
   ];
+  
 
   return (
     <section className="px-4 md:px-10 lg:px-[149px] py-10 md:py-20">
@@ -46,7 +51,8 @@ const Partners = () => {
         ))}
       </div>
       <div className="flex justify-center mt-10">
-        <button
+        <button 
+          onClick={handleJoinClick}
           className="w-[204px] bg-[#FCF890] py-2 px-4 h-[50px] rounded-full 
           text-[#000000] text-center text-[16px] font-normal 
           leading-normal tracking-[0.96px] capitalize 
