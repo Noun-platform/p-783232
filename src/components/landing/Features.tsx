@@ -3,7 +3,7 @@ import React from "react";
 
 const Features = () => {
   return (
-    <section className="px-4 sm:px-10 md:px-20 lg:px-[149px] bg-[#0E0B06] w-full py-10 sm:py-20 text-white">
+    <section className="px-4 sm:px-10 md:px-20 lg:px-[149px] bg-[#000] w-full py-10 sm:py-20 text-white">
       <div className="text-center mb-8 sm:mb-[60px] w-full">
         <h2 className="text-2xl sm:text-3xl md:text-[40px] mt-[25px] sm:mt-[50px] font-normal tracking-[1.2px] text-white">
           Tired of slow responses, high MOQs,<br className="hidden sm:block"></br> and outdated systems?

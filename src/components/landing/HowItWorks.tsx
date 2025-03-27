@@ -28,7 +28,7 @@ const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section className="w-full min-h-[832px] bg-[#100D08] flex flex-col items-center px-6 py-[50px]">
+    <section className="w-full min-h-[832px] bg-[#000] flex flex-col items-center px-6 py-[50px]">
       <header className="max-w-[981px] w-full flex flex-col items-center gap-5 mb-16">
         <h2 className="text-[#FCFCFA] text-[40px] text-center tracking-[1.2px] max-md:text-4xl max-sm:text-[32px]">
           How NOUN works

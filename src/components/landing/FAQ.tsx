@@ -32,7 +32,7 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="bg-black py-16 md:py-24 px-4 md:px-10 lg:px-[149px]">
+    <section className="bg-[#000] py-16 md:py-24 px-4 md:px-10 lg:px-[149px]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-[40px] text-white font-normal tracking-[1.2px] mb-2">FAQ</h2>
@@ -60,7 +60,7 @@ const FAQ = () => {
       </div>
       
       {/* Footer with no horizontal padding to extend to the edges */}
-      <div className="flex justify-between mt-16 text-white text-sm w-full">
+      <div className="flex justify-between mt-16 text-gray-200 text-sm w-full">
         <div>NOUN 2025</div>
         <div className="flex space-x-8">
           <a href="#" className="hover:underline">Vendors</a>
