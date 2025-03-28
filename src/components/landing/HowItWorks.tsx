@@ -55,7 +55,7 @@ const HowItWorks: React.FC = () => {
                 text-[#000000] text-center text-[18px] font-thin 
                 leading-normal tracking-[0.96px] capitalize 
                 antialiased"
-                onClick={() => window.open("https://noun-project.vercel.app/apps/loginLanding", "_blank")}
+                onClick={() => window.open("https://calendly.com/hiecstudios/noun-discovery-call", "_blank")}
               >
               Chat with our Founder
               </button>
