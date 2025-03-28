@@ -48,7 +48,7 @@ const Hero = () => {
               How it works
             </a>
             <a
-              href="#vendors"
+              href="https://noun-project.vercel.app/apps/loginLanding"
               className="text-center custom-nav-link hover:text-white transition-colors text-sm font-normal tracking-wide"
             >
               Join our Beta
