@@ -18,7 +18,7 @@ const BrandSection = () => {
         
         {/* Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-10">
-        <p className="text-lg sm:text-xl md:text-[25px] font-medium tracking-[0.75px] text-white mb-[20px]">
+        <p className="text-lg sm:text-xl md:text-[35px] font-medium tracking-[0.75px] text-white mb-[20px]">
   You've got the idea, we've got the infrastructure
 </p>
 
@@ -32,7 +32,9 @@ const BrandSection = () => {
                 text-[#000000] text-center text-[18px] font-thin 
                 leading-normal tracking-[0.96px] capitalize 
                 antialiased"
+                onClick={() => window.open("https://calendly.com/hiecstudios/noun-discovery-call", "_blank")}
               >
+                
                Book a Call
               </button>
         </div>

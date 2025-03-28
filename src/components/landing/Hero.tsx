@@ -33,20 +33,20 @@ const Hero = () => {
               href="#vendors"
               className="text-center custom-nav-link hover:text-white transition-colors text-sm font-normal tracking-wide"
             >
-              Vendors
-            </a>
+              Join our Beta
+            </a> {/*
             <a
               href="#projects"
               className="text-center custom-nav-link hover:text-white transition-colors text-sm font-normal tracking-wide"
             >
               Projects
-            </a>
+            </a> 
             <a
               href="https://noun-project.vercel.app/apps/loginLanding"
               className="text-center custom-nav-link hover:text-white transition-colors text-sm font-normal tracking-wide"
             >
               Sign In
-            </a>
+            </a>*/}
           </nav>
         </div>
         <div className="flex-1 flex items-center justify-center text-center">
@@ -63,8 +63,9 @@ const Hero = () => {
                 text-[#000000] text-center text-[18px] font-thin 
                 leading-normal tracking-[0.96px] capitalize 
                 antialiased"
+                onClick={() => window.open("https://noun-project.vercel.app/apps/loginLanding", "_blank")}
               >
-                Connect
+                Join our Beta
               </button>
               <button
                 className="w-[170px] border-[1px] border-[#FCFCFA] px-4 h-[50px] rounded-full 

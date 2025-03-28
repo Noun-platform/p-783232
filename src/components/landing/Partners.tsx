@@ -49,10 +49,11 @@ const Partners = () => {
         <button
           className="w-[204px] bg-[#FCF890] py-2 px-4 h-[50px] rounded-full 
           text-[#000000] text-center text-[16px] font-normal 
-          leading-normal tracking-[0.96px] capitalize 
+          leading-normal tracking-[0.96px]    
           antialiased"
+          onClick={() => window.open("https://noun-project.vercel.app/apps/loginLanding", "_blank")}
         >
-          Join our beta
+          Sign Up As A Vendor
         </button>
       </div>
     </section>
