@@ -90,7 +90,7 @@ const ProductBrief = ({ brief }: ProductBriefProps) => {
       <div className="p-4 border-b border-beauty-100 bg-beauty-50/50 flex items-center justify-between">
         <h2 className="text-sm font-medium text-beauty-900">Product Brief</h2>
         <div className="flex gap-2">
-          {isEditing ? (
+          {/* {isEditing ? (
             <>
               <Button 
                 variant="outline" 
@@ -120,8 +120,8 @@ const ProductBrief = ({ brief }: ProductBriefProps) => {
             >
               <Edit2 className="h-4 w-4 mr-1" />
               Edit
-            </Button>
-          )}
+            </Button> 
+          )}*/}
           <span className="text-xs px-2 py-1 rounded-full bg-beauty-700 text-white">
             {displayBrief.productCategory || displayBrief.category || 'Beauty Product'}
           </span>

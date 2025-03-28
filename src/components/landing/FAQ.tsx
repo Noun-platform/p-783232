@@ -6,7 +6,6 @@ import {
   AccordionItem, 
   AccordionTrigger 
 } from "@/components/ui/accordion";
-import { Plus } from "lucide-react";
 
 const FAQ = () => {
   const faqItems = [
@@ -33,7 +32,7 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="bg-black py-16 md:py-24 px-4 md:px-10 lg:px-[149px]">
+    <section className="bg-[#000] py-16 md:py-24 px-4 md:px-10 lg:px-[149px]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-[40px] text-white font-normal tracking-[1.2px] mb-2">FAQ</h2>
@@ -47,25 +46,26 @@ const FAQ = () => {
             <AccordionItem 
               key={index} 
               value={`item-${index}`}
-              className="border border-white rounded-full overflow-hidden px-6 border-opacity-50"
+              className="border border-white rounded-full overflow-hidden px-6 border-opacity-50 data-[state=open]:rounded-[20px]"
             >
               <AccordionTrigger className="text-white py-4 text-base md:text-lg font-light hover:no-underline">
-                {item.question}
+                <span className="pl-2">{item.question}</span>
               </AccordionTrigger>
-              <AccordionContent className="text-white text-sm md:text-base font-light pb-5 pl-4">
+              <AccordionContent className="text-white text-sm md:text-base font-light pb-5 pl-6">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
-
-        <div className="flex justify-between mt-16 text-white text-sm">
-          <div>NOUN 2025</div>
-          <div className="flex space-x-8">
-            <a href="#" className="hover:underline">Vendors</a>
-            <a href="#" className="hover:underline">Brands</a>
-            <a href="#" className="hover:underline">Sign In</a>
-          </div>
+      </div>
+      
+      {/* Footer with no horizontal padding to extend to the edges */}
+      <div className="flex justify-between mt-16 text-gray-200 text-sm w-full">
+        <div>NOUN 2025</div>
+        <div className="flex space-x-8">
+          <a href="#" className="hover:underline">Vendors</a>
+          <a href="#" className="hover:underline">Brands</a>
+          <a href="#" className="hover:underline">Sign In</a>
         </div>
       </div>
     </section>

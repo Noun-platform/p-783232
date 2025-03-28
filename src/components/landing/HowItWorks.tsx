@@ -28,7 +28,7 @@ const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section className="w-full min-h-[832px] bg-[#100D08] flex flex-col items-center px-6 py-[50px]">
+    <section id="how-it-works" className="w-full min-h-[832px] bg-[#000] flex flex-col items-center px-6 py-[50px]">
       <header className="max-w-[981px] w-full flex flex-col items-center gap-5 mb-16">
         <h2 className="text-[#FCFCFA] text-[40px] text-center tracking-[1.2px] max-md:text-4xl max-sm:text-[32px]">
           How NOUN works
@@ -51,7 +51,7 @@ const HowItWorks: React.FC = () => {
       </div>
 
       <button
-                className="mt-[10px] w-[250px] bg-[#FCF890] py-2 px-4 h-[50px] rounded-full 
+                className="mt-[50px] w-[250px] bg-[#FCF890] py-2 px-4 h-[50px] rounded-full 
                 text-[#000000] text-center text-[18px] font-thin 
                 leading-normal tracking-[0.96px] capitalize 
                 antialiased"

@@ -43,8 +43,10 @@ const BriefGeneratorSection = ({
                 Simply describe your product idea and our AI will do the rest.
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-              <ChatInterface onBriefGenerated={onBriefGenerated} />
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 items-start">
+              <div className="max-h-[700px] overflow-auto rounded-xl">
+                <ChatInterface onBriefGenerated={onBriefGenerated}/>
+              </div>
               <ProductBrief brief={brief} />
             </div>
           </>
