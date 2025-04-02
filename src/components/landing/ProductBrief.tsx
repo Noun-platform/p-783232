@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
@@ -17,6 +18,7 @@ const ProductBrief = ({ brief }: ProductBriefProps) => {
   const [editedBrief, setEditedBrief] = useState<any>(null);
   const [isEditing, setIsEditing] = useState(false);
   const briefContentRef = useRef<HTMLDivElement>(null);
+  const pdfContentRef = useRef<HTMLDivElement>(null);
 
   // Initialize edited brief when a new brief is received
   React.useEffect(() => {
@@ -77,25 +79,86 @@ const ProductBrief = ({ brief }: ProductBriefProps) => {
       return;
     }
 
-    const element = briefContentRef.current;
+    // Create a temporary clone for PDF generation
+    const pdfContainer = document.createElement('div');
+    pdfContainer.className = 'pdf-container';
+    pdfContainer.innerHTML = briefContentRef.current.innerHTML;
+    
+    // Add PDF-specific styles
+    const style = document.createElement('style');
+    style.textContent = `
+      .pdf-container {
+        font-family: Arial, sans-serif;
+        color: #333;
+        padding: 20px;
+        max-width: 210mm;
+        margin: 0 auto;
+      }
+      .pdf-container .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .pdf-container h1, .pdf-container h2, .pdf-container h3 {
+        margin-top: 8px;
+        margin-bottom: 4px;
+      }
+      .pdf-container p {
+        margin: 4px 0;
+      }
+      .pdf-container section {
+        margin-bottom: 12px;
+        page-break-inside: avoid;
+      }
+      .pdf-container .text-center {
+        text-align: center;
+      }
+      @media print {
+        .pdf-container {
+          width: 100%;
+        }
+      }
+    `;
+    pdfContainer.appendChild(style);
+    
+    // Temporarily append to document (but hidden)
+    pdfContainer.style.position = 'absolute';
+    pdfContainer.style.left = '-9999px';
+    document.body.appendChild(pdfContainer);
+    
     const opt = {
       margin: [10, 10, 10, 10],
       filename: `${brief.productName || 'Product_Brief'}.pdf`,
       image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      html2canvas: { 
+        scale: 2, 
+        useCORS: true,
+        letterRendering: true,
+        allowTaint: true
+      },
+      jsPDF: { 
+        unit: 'mm', 
+        format: 'a4', 
+        orientation: 'portrait',
+        compress: true
+      }
     };
 
     toast.loading('Generating PDF...');
     
     // Execute html2pdf with callbacks
-    html2pdf().from(element).set(opt).save().then(() => {
+    html2pdf().from(pdfContainer).set(opt).save()
+    .then(() => {
       toast.dismiss();
       toast.success('PDF downloaded successfully');
+      // Clean up
+      document.body.removeChild(pdfContainer);
     }).catch((error) => {
       toast.dismiss();
       toast.error('Failed to generate PDF');
       console.error('PDF generation error:', error);
+      // Clean up
+      document.body.removeChild(pdfContainer);
     });
   };
 
