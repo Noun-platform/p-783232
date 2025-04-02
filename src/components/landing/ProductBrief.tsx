@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Edit2, Check, X } from 'lucide-react';
+import { Edit2, Check, X, Download } from 'lucide-react';
+import html2pdf from 'html2pdf.js';
+import { toast } from 'sonner';
 
 interface ProductBriefProps {
   brief: any | null;
@@ -14,6 +16,7 @@ interface ProductBriefProps {
 const ProductBrief = ({ brief }: ProductBriefProps) => {
   const [editedBrief, setEditedBrief] = useState<any>(null);
   const [isEditing, setIsEditing] = useState(false);
+  const briefContentRef = useRef<HTMLDivElement>(null);
 
   // Initialize edited brief when a new brief is received
   React.useEffect(() => {
@@ -66,6 +69,34 @@ const ProductBrief = ({ brief }: ProductBriefProps) => {
       return value.join(', ');
     }
     return String(value);
+  };
+
+  const handleDownloadPDF = () => {
+    if (!briefContentRef.current || !brief) {
+      toast.error('No brief content to download');
+      return;
+    }
+
+    const element = briefContentRef.current;
+    const opt = {
+      margin: [10, 10, 10, 10],
+      filename: `${brief.productName || 'Product_Brief'}.pdf`,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    toast.loading('Generating PDF...');
+    
+    // Execute html2pdf with callbacks
+    html2pdf().from(element).set(opt).save().then(() => {
+      toast.dismiss();
+      toast.success('PDF downloaded successfully');
+    }).catch((error) => {
+      toast.dismiss();
+      toast.error('Failed to generate PDF');
+      console.error('PDF generation error:', error);
+    });
   };
 
   const displayBrief = isEditing ? editedBrief : brief;
@@ -122,6 +153,17 @@ const ProductBrief = ({ brief }: ProductBriefProps) => {
               Edit
             </Button> 
           )}*/}
+          {displayBrief && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleDownloadPDF}
+              className="h-8 px-3 bg-beauty-50 hover:bg-beauty-100 text-beauty-700"
+            >
+              <Download className="h-4 w-4 mr-1" />
+              Download PDF
+            </Button>
+          )}
           <span className="text-xs px-2 py-1 rounded-full bg-beauty-700 text-white">
             {displayBrief.productCategory || displayBrief.category || 'Beauty Product'}
           </span>
@@ -129,7 +171,7 @@ const ProductBrief = ({ brief }: ProductBriefProps) => {
       </div>
 
       <ScrollArea className="flex-1 p-6">
-        <div className="space-y-8">
+        <div className="space-y-8" ref={briefContentRef}>
           {/* Header */}
           <div className="text-center mb-6">
             {isEditing ? (
