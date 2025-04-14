@@ -18,7 +18,6 @@ const ProductBrief = ({ brief }: ProductBriefProps) => {
   const [editedBrief, setEditedBrief] = useState<any>(null);
   const [isEditing, setIsEditing] = useState(false);
   const briefContentRef = useRef<HTMLDivElement>(null);
-  const pdfContentRef = useRef<HTMLDivElement>(null);
 
   // Initialize edited brief when a new brief is received
   React.useEffect(() => {
@@ -79,59 +78,272 @@ const ProductBrief = ({ brief }: ProductBriefProps) => {
       return;
     }
 
-    // Create a temporary clone for PDF generation
-    const pdfContainer = document.createElement('div');
-    pdfContainer.className = 'pdf-container';
-    pdfContainer.innerHTML = briefContentRef.current.innerHTML;
-    
-    // Add PDF-specific styles
-    const style = document.createElement('style');
-    style.textContent = `
-      .pdf-container {
-        font-family: Arial, sans-serif;
-        color: #333;
-        padding: 20px;
-        max-width: 210mm;
-        margin: 0 auto;
-      }
-      .pdf-container .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-      .pdf-container h1, .pdf-container h2, .pdf-container h3 {
-        margin-top: 8px;
-        margin-bottom: 4px;
-      }
-      .pdf-container p {
-        margin: 4px 0;
-      }
-      .pdf-container section {
-        margin-bottom: 12px;
-        page-break-inside: avoid;
-      }
-      .pdf-container .text-center {
-        text-align: center;
-      }
-      @media print {
-        .pdf-container {
-          width: 100%;
+    // Create HTML content for PDF
+    const pdfContent = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>${brief.productName || 'Product Brief'}</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          color: #333;
+          padding: 40px;
+          max-width: 800px;
+          margin: 0 auto;
         }
-      }
+        h1 {
+          text-align: center;
+          font-size: 24px;
+          margin-bottom: 8px;
+        }
+        .tagline {
+          text-align: center;
+          font-size: 16px;
+          color: #666;
+          margin-bottom: 25px;
+        }
+        h2 {
+          font-size: 18px;
+          text-transform: uppercase;
+          color: #666;
+          margin-top: 25px;
+          margin-bottom: 10px;
+          border-bottom: 1px solid #eee;
+          padding-bottom: 5px;
+        }
+        h3 {
+          font-size: 14px;
+          color: #555;
+          margin-bottom: 5px;
+        }
+        p {
+          margin: 8px 0;
+          line-height: 1.5;
+        }
+        section {
+          margin-bottom: 20px;
+          page-break-inside: avoid;
+        }
+        .grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+        }
+        .ingredients-list {
+          margin: 0;
+          padding: 0;
+          list-style-type: none;
+        }
+        .ingredients-list li {
+          margin-bottom: 10px;
+          padding-left: 20px;
+          position: relative;
+        }
+        .ingredients-list li:before {
+          content: "•";
+          position: absolute;
+          left: 0;
+          color: #666;
+        }
+        .benefits-list {
+          margin: 0;
+          padding: 0;
+          list-style-type: none;
+        }
+        .benefits-list li {
+          margin-bottom: 5px;
+          padding-left: 20px;
+          position: relative;
+        }
+        .benefits-list li:before {
+          content: "•";
+          position: absolute;
+          left: 0;
+          color: #666;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>${brief.productName || brief.product_name || 'Untitled Product'}</h1>
+      <p class="tagline">${brief.tagline || ''}</p>
+
+      <section>
+        <h2>Overview</h2>
+        <p>${brief.overview || 'No overview provided'}</p>
+      </section>
+
+      <section>
+        <h2>Manufacturing Requirements</h2>
+        <div class="grid">
+          <div>
+            <h3>Formula Type</h3>
+            <p>${brief.manufacturing?.formulaType || 
+                brief.manufacturing_requirements?.formula_type || 
+                'Not specified'}</p>
+          </div>
+          <div>
+            <h3>Product Form</h3>
+            <p>${brief.manufacturing?.productForm || 
+                brief.manufacturing_requirements?.product_form || 
+                'Not specified'}</p>
+          </div>
+        </div>
+        <h3>Special Requirements</h3>
+        <p>${brief.manufacturing?.specialRequirements || 
+            brief.manufacturing_requirements?.special_requirements || 
+            'Not specified'}</p>
+        
+        <div class="grid">
+          <div>
+            <h3>MOQ</h3>
+            <p>${brief.moq || 'Not specified'}</p>
+          </div>
+          <div>
+            <h3>Vendor Location</h3>
+            <p>${brief.vendorLocation || 'Not specified'}</p>
+          </div>
+        </div>
+        
+        <h3>Manufacturing Capability</h3>
+        <p>${brief.capability || 'Not specified'}</p>
+      </section>
+
+      <section>
+        <h2>Target Market</h2>
+        <div class="grid">
+          <div>
+            <h3>Demographics</h3>
+            <p>${typeof brief.targetMarket?.demographics === 'string' 
+                ? brief.targetMarket.demographics 
+                : typeof brief.target_market?.demographics === 'string'
+                  ? brief.target_market.demographics
+                  : 'Not specified'}</p>
+          </div>
+          <div>
+            <h3>Age Range</h3>
+            <p>${typeof brief.targetMarket?.ageRange === 'string' 
+                ? brief.targetMarket.ageRange 
+                : typeof brief.target_market?.age_range === 'string'
+                  ? brief.target_market.age_range
+                  : 'Not specified'}</p>
+          </div>
+        </div>
+        <h3>Pain Points</h3>
+        <p>${Array.isArray(brief.targetMarket?.painPoints) 
+            ? brief.targetMarket.painPoints.join(', ')
+            : Array.isArray(brief.target_market?.pain_points) 
+              ? brief.target_market.pain_points.join(', ')
+              : typeof brief.targetMarket?.painPoints === 'string' 
+                ? brief.targetMarket.painPoints 
+                : typeof brief.target_market?.pain_points === 'string'
+                  ? brief.target_market.pain_points
+                  : 'Not specified'}</p>
+      </section>
+
+      <section>
+        <h2>Key Ingredients</h2>
+        <ul class="ingredients-list">
+          ${(brief.ingredients || brief.key_ingredients || []).map((ingredient: any) => `
+            <li>
+              <strong>${ingredient.name || ingredient.ingredient || 'Unnamed Ingredient'}</strong>: 
+              ${ingredient.benefit || ingredient.benefits || 'No benefits listed'}
+            </li>
+          `).join('')}
+          ${(brief.ingredients || brief.key_ingredients || []).length === 0 ? 
+            '<li>No ingredients specified</li>' : ''}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Claims & Benefits</h2>
+        <ul class="benefits-list">
+          ${(brief.benefits || brief.product_claims || []).map((benefit: string) => `
+            <li>${benefit}</li>
+          `).join('')}
+          ${(brief.benefits || brief.product_claims || []).length === 0 ? 
+            '<li>No benefits specified</li>' : ''}
+        </ul>
+      </section>
+
+      ${brief.packaging ? `
+      <section>
+        <h2>Packaging & Branding</h2>
+        ${typeof brief.packaging === 'string' ? `
+          <p>${brief.packaging}</p>
+        ` : typeof brief.packaging === 'object' ? `
+          <div>
+            <h3>Type</h3>
+            <p>${brief.packaging.type || 'Not specified'}</p>
+          </div>
+          ${brief.packaging.size || brief.packaging.size === '' ? `
+            <div>
+              <h3>Size</h3>
+              <p>${brief.packaging.size || 'Not specified'}</p>
+            </div>
+          ` : ''}
+          ${brief.packaging.branding_suggestions || brief.packaging.brandingSuggestions ? `
+            <div>
+              <h3>Branding Suggestions</h3>
+              <p>${brief.packaging.branding_suggestions || brief.packaging.brandingSuggestions}</p>
+            </div>
+          ` : ''}
+        ` : ''}
+      </section>
+      ` : ''}
+
+      ${brief.pricing || brief.price_point ? `
+      <section>
+        <h2>Price Point</h2>
+        <div class="grid">
+          <div>
+            <h3>Target Retail Price</h3>
+            <p>${brief.pricing?.targetRetailPrice || 
+                brief.price_point?.retail_price || 
+                (typeof brief.price_point === 'string' ? brief.price_point : 'Not specified')}</p>
+          </div>
+          <div>
+            <h3>Market Positioning</h3>
+            <p>${brief.pricing?.marketPositioning || 
+                brief.price_point?.market_positioning || 
+                'Not specified'}</p>
+          </div>
+        </div>
+      </section>
+      ` : ''}
+
+      ${brief.regulatory || brief.regulatory_considerations ? `
+      <section>
+        <h2>Regulatory & Compliance</h2>
+        ${typeof brief.regulatory === 'string' ? `
+          <p>${brief.regulatory}</p>
+        ` : Array.isArray(brief.regulatory_considerations) ? `
+          <ul class="benefits-list">
+            ${brief.regulatory_considerations.map((item: string) => `
+              <li>${item}</li>
+            `).join('')}
+          </ul>
+        ` : `
+          <p>No regulatory information specified</p>
+        `}
+      </section>
+      ` : ''}
+    </body>
+    </html>
     `;
-    pdfContainer.appendChild(style);
-    
-    // Temporarily append to document (but hidden)
-    pdfContainer.style.position = 'absolute';
-    pdfContainer.style.left = '-9999px';
-    document.body.appendChild(pdfContainer);
+
+    // Create a blob with the content
+    const blob = new Blob([pdfContent], { type: 'text/html' });
+    const blobUrl = URL.createObjectURL(blob);
+
+    toast.loading('Generating PDF...');
     
     const opt = {
       margin: [10, 10, 10, 10],
       filename: `${brief.productName || 'Product_Brief'}.pdf`,
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { 
-        scale: 2, 
+        scale: 2,
         useCORS: true,
         letterRendering: true,
         allowTaint: true
@@ -144,22 +356,44 @@ const ProductBrief = ({ brief }: ProductBriefProps) => {
       }
     };
 
-    toast.loading('Generating PDF...');
-    
-    // Execute html2pdf with callbacks
-    html2pdf().from(pdfContainer).set(opt).save()
-    .then(() => {
-      toast.dismiss();
-      toast.success('PDF downloaded successfully');
-      // Clean up
-      document.body.removeChild(pdfContainer);
-    }).catch((error) => {
-      toast.dismiss();
-      toast.error('Failed to generate PDF');
-      console.error('PDF generation error:', error);
-      // Clean up
-      document.body.removeChild(pdfContainer);
-    });
+    // Use fetch to get the HTML content as text
+    fetch(blobUrl)
+      .then(response => response.text())
+      .then(htmlText => {
+        // Create a temporary container
+        const container = document.createElement('div');
+        container.innerHTML = htmlText;
+        document.body.appendChild(container);
+        container.style.position = 'absolute';
+        container.style.left = '-9999px';
+        
+        // Generate PDF from the container
+        html2pdf()
+          .from(container)
+          .set(opt)
+          .save()
+          .then(() => {
+            toast.dismiss();
+            toast.success('PDF downloaded successfully');
+            // Clean up
+            document.body.removeChild(container);
+            URL.revokeObjectURL(blobUrl);
+          })
+          .catch(error => {
+            toast.dismiss();
+            toast.error('Failed to generate PDF');
+            console.error('PDF generation error:', error);
+            // Clean up
+            document.body.removeChild(container);
+            URL.revokeObjectURL(blobUrl);
+          });
+      })
+      .catch(error => {
+        toast.dismiss();
+        toast.error('Failed to generate PDF');
+        console.error('PDF generation error:', error);
+        URL.revokeObjectURL(blobUrl);
+      });
   };
 
   const displayBrief = isEditing ? editedBrief : brief;
